@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1789–1815 : Révolution et Empire</title>
+<style>
+:root{
+  --bg:#0f1410;
+  --bg2:#161d17;
+  --parchment:#ece4d3;
+  --parchment-dim:#c9bfa8;
+  --ink:#1c1a14;
+  --gold:#b8933f;
+  --red:#7a2b28;
+  --blue:#2c3e5c;
+  --line:rgba(236,228,211,0.14);
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  box-sizing:border-box;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:70px;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--parchment);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  line-height:1.6;
+}
+h1,h2,h3,.disp{
+  font-family:"Didot","Bodoni MT","Playfair Display",Georgia,serif;
+  font-weight:700;
+  letter-spacing:0.01em;
+  color:var(--parchment);
+}
+a{color:var(--gold);}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(15,20,16,0.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top,0px);
+}
+.navrow{
+  max-width:760px;margin:0 auto;padding:10px 18px;
+  display:flex;gap:14px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.navrow::-webkit-scrollbar{display:none;}
+.navrow a{
+  flex:0 0 auto;color:var(--parchment-dim);text-decoration:none;
+  font-family:Georgia,serif;font-size:0.82rem;font-style:italic;
+  border-bottom:1px solid transparent;padding-bottom:2px;
+  white-space:nowrap;
+}
+.navrow a:hover{color:var(--gold);border-color:var(--gold);}
+
+/* HERO */
+header.hero{
+  position:relative;padding:64px 22px 46px;text-align:center;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(184,147,63,0.18), transparent 60%),
+    linear-gradient(180deg,#141a15,#0f1410 70%);
+  border-bottom:1px solid var(--line);
+}
+.hero .kicker{
+  font-family:Georgia,serif;font-style:italic;color:var(--gold);
+  font-size:0.95rem;margin-bottom:10px;
+}
+.hero h1{
+  font-size:clamp(2.1rem,8vw,3.6rem);
+  margin:0 0 14px;line-height:1.05;
+}
+.hero .dates{
+  font-size:clamp(1.1rem,4vw,1.4rem);color:var(--parchment-dim);
+  letter-spacing:0.06em;
+}
+.hero .sub{
+  max-width:520px;margin:22px auto 0;color:var(--parchment-dim);
+  font-size:0.98rem;
+}
+.hero .frise{
+  margin-top:34px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* SECTIONS */
+section{padding:52px 0;border-bottom:1px solid var(--line);}
+section.alt{background:var(--bg2);}
+.eyebrow-date{
+  display:inline-block;color:var(--gold);font-family:Georgia,serif;
+  font-style:italic;font-size:1.05rem;margin-bottom:6px;
+}
+section h2{font-size:clamp(1.5rem,5vw,2rem);margin:0 0 4px;}
+section .lede{color:var(--parchment-dim);font-size:1rem;margin:0 0 22px;max-width:60ch;}
+section p{margin:0 0 16px;max-width:66ch;}
+section p:last-child{margin-bottom:0;}
+
+.card{
+  border-left:3px solid var(--gold);
+  background:rgba(236,228,211,0.035);
+  padding:16px 18px;margin:20px 0;
+  border-radius:0 6px 6px 0;
+}
+.card h3{font-size:1.05rem;margin:0 0 8px;color:var(--gold);}
+.card p{font-size:0.95rem;margin:0;}
+
+.grid2{display:grid;grid-template-columns:1fr;gap:16px;margin:20px 0;}
+@media(min-width:620px){.grid2{grid-template-columns:1fr 1fr;}}
+
+.notion{
+  border:1px solid var(--line);padding:18px;border-radius:4px;
+  background:rgba(0,0,0,0.15);font-size:0.93rem;
+}
+.notion dt{color:var(--gold);font-weight:600;margin-top:12px;}
+.notion dt:first-child{margin-top:0;}
+.notion dd{margin:2px 0 0;color:var(--parchment-dim);}
+
+/* TIMELINE */
+.tl{position:relative;margin:26px 0 0;padding-left:26px;border-left:2px solid var(--line);}
+.tl-item{position:relative;padding-bottom:26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-32px;top:4px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 0 4px var(--bg2);
+}
+section:not(.alt) .tl-item::before{box-shadow:0 0 0 4px var(--bg);}
+.tl-date{font-family:Georgia,serif;font-style:italic;color:var(--gold);font-size:0.95rem;}
+.tl-item h4{margin:2px 0 6px;font-size:1.05rem;color:var(--parchment);font-weight:600;font-family:inherit;}
+.tl-item p{font-size:0.93rem;margin:0;color:var(--parchment-dim);max-width:58ch;}
+
+/* portraits row */
+.portraits{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0;}
+.portrait{
+  flex:1 1 130px;min-width:130px;background:rgba(0,0,0,0.2);
+  border:1px solid var(--line);padding:12px;border-radius:4px;text-align:center;
+}
+.portrait .init{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 8px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,var(--blue),var(--red));
+  color:var(--parchment);font-family:"Didot",Georgia,serif;font-size:1.2rem;
+}
+.portrait b{display:block;font-size:0.88rem;}
+.portrait span{display:block;font-size:0.76rem;color:var(--parchment-dim);margin-top:2px;}
+
+/* map-ish legend / stat band */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:22px 0;}
+@media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr);}}
+.stat{text-align:center;padding:14px 6px;border:1px solid var(--line);border-radius:4px;}
+.stat .n{font-family:"Didot",Georgia,serif;font-size:1.6rem;color:var(--gold);display:block;}
+.stat .l{font-size:0.75rem;color:var(--parchment-dim);}
+
+blockquote{
+  margin:22px 0;padding:14px 18px;border-left:3px solid var(--red);
+  font-style:italic;color:var(--parchment-dim);font-size:0.98rem;
+  background:rgba(122,43,40,0.08);
+}
+blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:0.8rem;color:var(--gold);}
+
+.divider{width:60px;height:2px;background:var(--gold);margin:0 0 18px;opacity:0.6;}
+
+/* révision */
+details{
+  border:1px solid var(--line);border-radius:4px;margin:10px 0;
+  background:rgba(0,0,0,0.15);
+}
+summary{
+  padding:12px 16px;cursor:pointer;font-weight:600;color:var(--parchment);
+  list-style:none;display:flex;justify-content:space-between;align-items:center;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";color:var(--gold);font-size:1.2rem;}
+details[open] summary::after{content:"–";}
+details .a{padding:0 16px 16px;color:var(--parchment-dim);font-size:0.93rem;}
+
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:0.9rem;}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+th{color:var(--gold);font-weight:600;font-size:0.82rem;}
+
+footer{padding:40px 22px 60px;text-align:center;color:var(--parchment-dim);font-size:0.82rem;}
+footer .frise{width:80px;height:1px;background:var(--gold);margin:0 auto 16px;opacity:0.5;}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<nav><div class="navrow">
+  <a href="#origines">Origines</a>
+  <a href="#1789">1789</a>
+  <a href="#monarchie-constit">1789-92</a>
+  <a href="#convention">Convention</a>
+  <a href="#terreur">Terreur</a>
+  <a href="#directoire">Directoire</a>
+  <a href="#consulat">Consulat</a>
+  <a href="#empire">Empire</a>
+  <a href="#guerres">Guerres</a>
+  <a href="#chute">Chute</a>
+  <a href="#heritage">Héritage</a>
+  <a href="#reviser">Réviser</a>
+</div></nav>
+
+<header class="hero">
+  <div class="kicker">Histoire — 1ère spécialité</div>
+  <h1>Révolution française<br>&amp; Empire</h1>
+  <div class="dates">1789 — 1815</div>
+  <p class="sub">D'une monarchie à bout de souffle à la chute définitive de Napoléon : vingt-six années qui refondent la France et redessinent l'Europe.</p>
+  <div class="frise"></div>
+</header>
+
+<section id="origines">
+  <div class="wrap">
+    <span class="eyebrow-date">Avant 1789</span>
+    <h2>Une monarchie en crise</h2>
+    <p class="lede">Crise financière, crise sociale, crise politique : trois fractures se rejoignent à la fin des années 1780.</p>
+
+    <p>La France de Louis XVI est une <b>société d'ordres</b> : le clergé et la noblesse (moins de 2% de la population) détiennent privilèges fiscaux et honorifiques, tandis que le tiers état — paysans, bourgeois, artisans — supporte l'essentiel de l'impôt. Cette organisation, héritée de la société féodale, est de plus en plus contestée par une bourgeoisie enrichie par le commerce et instruite par les idées des Lumières (Montesquieu, Voltaire, Rousseau), qui réclame l'égalité civile et une participation au pouvoir.</p>
+
+    <p>L'État est surtout ruiné : le soutien à l'indépendance américaine (1778-1783) a creusé une dette colossale, et le système fiscal, inégalitaire et mal centralisé, ne suffit plus à la financer. Les tentatives de réforme des contrôleurs généraux (Turgot, Necker, Calonne) échouent toutes face à l'opposition des privilégiés et des parlements. En 1788, une crise agricole (mauvaises récoltes, hiver rigoureux) fait flamber le prix du pain et jette le peuple des villes dans la misère.</p>
+
+    <div class="card">
+      <h3>La convocation des États généraux</h3>
+      <p>Acculé, Louis XVI convoque les États généraux — qui ne s'étaient pas réunis depuis 1614 — pour mai 1789. Chaque ordre (clergé, noblesse, tiers état) rédige des <i>cahiers de doléances</i>. Le tiers état, qui obtient le doublement de ses représentants, exige surtout que le vote se fasse par tête et non par ordre, ce qui changerait tout le rapport de force.</p>
+    </div>
+  </div>
+</section>
+
+<section id="1789" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">Été 1789</span>
+    <h2>L'année de la rupture</h2>
+    <p class="lede">En quelques semaines, la monarchie absolue vacille et un nouvel ordre politique s'esquisse.</p>
+
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-date">17 juin 1789</div>
+        <h4>Serment du Jeu de paume</h4>
+        <p>Les députés du tiers état, rejoints par des curés et des nobles libéraux, se proclament <b>Assemblée nationale</b> puis jurent de ne pas se séparer avant d'avoir donné une constitution à la France.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">14 juillet 1789</div>
+        <h4>Prise de la Bastille</h4>
+        <p>Craignant une répression militaire, le peuple parisien s'arme et s'empare de la forteresse-prison, symbole de l'arbitraire royal. L'événement, largement diffusé, devient le symbole fondateur de la Révolution.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Juillet-août 1789</div>
+        <h4>La Grande Peur</h4>
+        <p>Dans les campagnes, la rumeur d'un « complot aristocratique » provoque des révoltes paysannes contre les châteaux et les droits seigneuriaux.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">4 août 1789</div>
+        <h4>Abolition des privilèges</h4>
+        <p>Dans une nuit de vote spectaculaire, l'Assemblée abolit les droits féodaux, les privilèges fiscaux et l'inégalité devant l'impôt : la société d'ordres est juridiquement détruite.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">26 août 1789</div>
+        <h4>Déclaration des droits de l'homme et du citoyen</h4>
+        <p>Texte fondateur qui proclame la liberté, l'égalité en droits, la souveraineté nationale et la séparation des pouvoirs. Il inspirera de nombreuses constitutions dans le monde.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">5-6 octobre 1789</div>
+        <h4>Marche des femmes sur Versailles</h4>
+        <p>Des Parisiennes marchent sur Versailles pour réclamer du pain ; le roi et sa famille sont ramenés à Paris, désormais sous la surveillance du peuple.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="monarchie-constit">
+  <div class="wrap">
+    <span class="eyebrow-date">1789-1792</span>
+    <h2>La monarchie constitutionnelle</h2>
+    <p class="lede">La France tente de concilier roi et souveraineté nationale — un compromis qui ne tient pas.</p>
+
+    <p>Entre 1789 et 1791, l'Assemblée constituante réorganise entièrement le pays : suppression des provinces au profit de <b>83 départements</b>, nationalisation des biens du clergé (gagés par les <i>assignats</i>), réforme de la justice, et surtout <b>Constitution civile du clergé</b> (1790) qui soumet les prêtres à l'État — provoquant un schisme entre prêtres « jureurs » et « réfractaires ».</p>
+
+    <p>La <b>Constitution de 1791</b> instaure une monarchie constitutionnelle : le roi garde le pouvoir exécutif (et un droit de veto), une assemblée élue au suffrage censitaire détient le pouvoir législatif. Mais la confiance envers Louis XVI s'effondre après sa tentative de fuite, arrêtée à <b>Varennes en juin 1791</b> : le roi apparaît désormais comme un traître prêt à s'allier à l'étranger.</p>
+
+    <div class="grid2">
+      <div class="card"><h3>Les Feuillants</h3><p>Monarchistes constitutionnels, partisans d'un compromis avec le roi. Perdent progressivement l'initiative après Varennes.</p></div>
+      <div class="card"><h3>Les Girondins puis les Montagnards</h3><p>À l'Assemblée législative (1791-92), les députés se radicalisent. Les Girondins poussent à la guerre contre l'Autriche dès avril 1792, pensant qu'elle révélerait les traîtres et souderait la nation.</p></div>
+    </div>
+
+    <p>La guerre tourne mal, l'ennemi envahit le territoire, et le manifeste de Brunswick (menaçant Paris de destruction si la famille royale est inquiétée) provoque l'inverse de l'effet recherché : le <b>10 août 1792</b>, le peuple parisien et des fédérés prennent le palais des Tuileries. Le roi est suspendu, puis emprisonné.</p>
+  </div>
+</section>
+
+<section id="convention" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">Septembre 1792 – Octobre 1795</span>
+    <h2>La Convention et la République</h2>
+    <p class="lede">La monarchie tombe, la République est proclamée, mais la guerre extérieure et la guerre civile menacent aussitôt le régime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">21 sept.</span><span class="l">1792 — Ire République</span></div>
+      <div class="stat"><span class="n">21 janv.</span><span class="l">1793 — mort de Louis XVI</span></div>
+      <div class="stat"><span class="n">749</span><span class="l">députés à la Convention</span></div>
+      <div class="stat"><span class="n">3</span><span class="l">factions rivales</span></div>
+    </div>
+
+    <p>Élue au suffrage universel masculin, la <b>Convention nationale</b> abolit la royauté et proclame la République le 21 septembre 1792, au lendemain de la victoire de <b>Valmy</b>. Après un procès très suivi, <b>Louis XVI est exécuté le 21 janvier 1793</b>, ce qui provoque l'entrée en guerre de presque toute l'Europe monarchique contre la France (Première coalition).</p>
+
+    <p>À l'intérieur, la République doit faire face à une insurrection royaliste et catholique majeure en <b>Vendée</b> (à partir de mars 1793), à des révoltes fédéralistes dans plusieurs grandes villes, à l'effondrement de l'assignat et à la pénurie. La Convention se divise entre <b>Girondins</b>, plus modérés et fédéralistes, et <b>Montagnards</b>, plus radicaux et centralisateurs, appuyés sur les sans-culottes parisiens. En juin 1793, les Girondins sont écartés du pouvoir.</p>
+  </div>
+</section>
+
+<section id="terreur">
+  <div class="wrap">
+    <span class="eyebrow-date">Septembre 1793 – Juillet 1794</span>
+    <h2>La Terreur</h2>
+    <p class="lede">Pour sauver la République en péril, les Montagnards mettent en place un gouvernement d'exception.</p>
+
+    <p>Face au péril intérieur et extérieur, la Convention vote la <b>levée en masse</b> (août 1793) et met en place un « gouvernement révolutionnaire » concentré dans le <b>Comité de salut public</b>, dominé par Robespierre, Saint-Just et Couthon. La loi des suspects (septembre 1793) autorise l'arrestation de tout ennemi présumé de la Révolution ; le Tribunal révolutionnaire juge et condamne rapidement, souvent à la guillotine.</p>
+
+    <div class="portraits">
+      <div class="portrait"><div class="init">R</div><b>Robespierre</b><span>Comité de salut public</span></div>
+      <div class="portrait"><div class="init">M</div><b>Marat</b><span>Assassiné en 1793</span></div>
+      <div class="portrait"><div class="init">D</div><b>Danton</b><span>Exécuté avril 1794</span></div>
+      <div class="portrait"><div class="init">S-J</div><b>Saint-Just</b><span>« L'Archange de la Terreur »</span></div>
+    </div>
+
+    <p>La Terreur combine répression politique (environ 17 000 exécutions officielles, sans compter les massacres en Vendée) et politique sociale : maximum des prix, réquisitions, calendrier révolutionnaire, déchristianisation. Elle permet aussi un redressement militaire spectaculaire : à l'été 1794, le territoire est libéré et les armées françaises passent à l'offensive.</p>
+
+    <blockquote>« La terreur n'est autre chose que la justice prompte, sévère, inflexible ; elle est donc une émanation de la vertu. »<cite>— Robespierre, discours du 5 février 1794</cite></blockquote>
+
+    <p>Mais la surenchère répressive (loi de Prairial, élimination des factions rivales — hébertistes puis dantonistes) isole Robespierre. Le <b>9 thermidor an II (27 juillet 1794)</b>, une coalition de conventionnels le fait arrêter ; il est exécuté le lendemain. La Terreur prend fin.</p>
+  </div>
+</section>
+
+<section id="directoire" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">1795-1799</span>
+    <h2>Le Directoire, une République fragile</h2>
+    <p class="lede">Un régime bourgeois, pris entre les royalistes et les jacobins, qui s'appuie de plus en plus sur l'armée.</p>
+
+    <p>La <b>Constitution de l'an III</b> (1795) instaure un exécutif collégial de cinq Directeurs et un pouvoir législatif bicaméral, élu au suffrage censitaire : c'est un régime pensé pour éviter à la fois le retour à la monarchie absolue et une nouvelle Terreur. Mais il souffre d'une instabilité chronique : coups de force répétés contre les élections (contre les royalistes en 1797, contre les jacobins en 1798), crise financière persistante, corruption.</p>
+
+    <p>Pour tenir, le Directoire s'appuie sur les succès militaires (campagnes d'Italie puis d'Égypte, menées notamment par un jeune général, <b>Napoléon Bonaparte</b>) et sur l'armée pour se maintenir au pouvoir. Cette dépendance prépare, sans le vouloir, la relève par un pouvoir militaire.</p>
+
+    <div class="card">
+      <h3>Le 18 Brumaire an VIII (9 novembre 1799)</h3>
+      <p>De retour d'Égypte, Bonaparte participe à un coup d'État qui renverse le Directoire. Il devient l'un des trois Consuls provisoires, puis rapidement Premier consul : la Révolution parlementaire s'achève.</p>
+    </div>
+  </div>
+</section>
+
+<section id="consulat">
+  <div class="wrap">
+    <span class="eyebrow-date">1799-1804</span>
+    <h2>Le Consulat : consolider l'œuvre révolutionnaire</h2>
+    <p class="lede">Bonaparte concentre le pouvoir tout en réconciliant la France avec certains acquis de 1789.</p>
+
+    <p>La <b>Constitution de l'an VIII</b> concentre l'essentiel du pouvoir entre les mains du Premier consul, plébiscité par le peuple — la démocratie directe (plébiscite) remplace la représentation parlementaire comme source de légitimité. Bonaparte se fait ensuite consul à vie (1802) puis empereur (1804), chaque étape validée par plébiscite.</p>
+
+    <div class="notion">
+      <dt>Le Code civil (1804)</dt>
+      <dd>Unifie le droit sur tout le territoire ; consacre l'égalité juridique, la propriété privée et la laïcité de l'État civil, mais restreint les droits des femmes et des enfants face au chef de famille.</dd>
+      <dt>Le Concordat (1801)</dt>
+      <dd>Réconcilie l'État avec l'Église catholique, reconnue « religion de la majorité des Français » sans redevenir religion d'État ; les biens du clergé vendus comme biens nationaux restent acquis.</dd>
+      <dt>Administration</dt>
+      <dd>Création des préfets (1800), centralisation du pouvoir dans les départements, Banque de France (1800), lycées (1802), Légion d'honneur (1802).</dd>
+    </div>
+
+    <p>Le Consulat installe ainsi un compromis durable : les principes de 1789 (égalité civile, propriété, laïcisation) sont conservés, mais encadrés par un pouvoir personnel de plus en plus autoritaire.</p>
+  </div>
+</section>
+
+<section id="empire" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">1804-1814</span>
+    <h2>Le Premier Empire</h2>
+    <p class="lede">Napoléon Ier fonde une monarchie impériale et impose sa domination sur une grande partie de l'Europe.</p>
+
+    <p>Le <b>2 décembre 1804</b>, Napoléon Bonaparte se couronne empereur des Français à Notre-Dame de Paris, en présence du pape Pie VII. Un nouveau régime hybride se met en place : une cour impériale, une noblesse d'Empire fondée sur le mérite militaire et administratif, mais aussi le maintien du suffrage universel (plébiscitaire) et du Code civil.</p>
+
+    <div class="grid2">
+      <div class="card"><h3>Un pouvoir autoritaire</h3><p>Presse censurée, police politique (Fouché), opposition muselée. La souveraineté nationale devient une fiction plébiscitaire au service d'un pouvoir personnel.</p></div>
+      <div class="card"><h3>La « Grande Nation »</h3><p>Napoléon diffuse le Code civil et les réformes administratives dans les territoires conquis ou annexés, exportant certains acquis révolutionnaires tout en imposant tributs et conscription.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="guerres">
+  <div class="wrap">
+    <span class="eyebrow-date">1805-1812</span>
+    <h2>L'Europe napoléonienne</h2>
+    <p class="lede">Une suite ininterrompue de coalitions et de campagnes qui portent la France au sommet de sa puissance — avant de la briser.</p>
+
+    <table>
+      <tr><th>Date</th><th>Événement</th><th>Portée</th></tr>
+      <tr><td>1805</td><td>Trafalgar</td><td>Défaite navale face aux Britanniques : la maîtrise des mers échappe à la France</td></tr>
+      <tr><td>1805</td><td>Austerlitz</td><td>Victoire éclatante sur l'Autriche et la Russie ; apogée militaire</td></tr>
+      <tr><td>1806</td><td>Blocus continental</td><td>Interdiction du commerce avec le Royaume-Uni imposée à l'Europe</td></tr>
+      <tr><td>1807-1808</td><td>Guerre d'Espagne</td><td>Résistance populaire (guérilla) : un enlisement coûteux</td></tr>
+      <tr><td>1812</td><td>Campagne de Russie</td><td>Désastre : la Grande Armée est décimée par le froid et la retraite</td></tr>
+      <tr><td>1813</td><td>Bataille des Nations (Leipzig)</td><td>Défaite majeure face à la sixième coalition</td></tr>
+    </table>
+
+    <p>L'immense domination napoléonienne (par annexion directe, royaumes satellites confiés à sa famille, ou alliances imposées) repose sur des ressources humaines et financières considérables, prélevées sur la France et les pays « alliés » : elle finit par nourrir un puissant sentiment national hostile à l'occupant, en Espagne comme en Allemagne.</p>
+  </div>
+</section>
+
+<section id="chute" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">1814-1815</span>
+    <h2>La chute de l'Empire</h2>
+    <p class="lede">Deux abdications, cent jours d'illusion, et la fin définitive à Waterloo.</p>
+
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-date">Mars-avril 1814</div>
+        <h4>Première abdication</h4>
+        <p>Les coalisés entrent dans Paris ; Napoléon abdique et est exilé à l'île d'Elbe. Louis XVIII, frère de Louis XVI, monte sur le trône (première Restauration).</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mars-juin 1815</div>
+        <h4>Les Cent-Jours</h4>
+        <p>Napoléon s'évade de l'île d'Elbe, reprend le pouvoir sans combattre et tente de rassurer en libéralisant le régime (Acte additionnel).</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">18 juin 1815</div>
+        <h4>Waterloo</h4>
+        <p>Défaite décisive face aux armées britannique et prussienne. Seconde abdication de Napoléon, exilé cette fois à Sainte-Hélène, où il meurt en 1821.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">1814-1815</div>
+        <h4>Le congrès de Vienne</h4>
+        <p>Les puissances européennes (Autriche, Russie, Prusse, Royaume-Uni) redessinent les frontières du continent selon le principe de légitimité monarchique, dans le but d'éviter toute nouvelle hégémonie française.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="heritage">
+  <div class="wrap">
+    <span class="eyebrow-date">Bilan</span>
+    <h2>Un héritage durable</h2>
+    <p class="lede">Malgré les retours en arrière, la France et l'Europe ne redeviennent jamais tout à fait comme avant 1789.</p>
+
+    <div class="grid2">
+      <div class="card"><h3>Ce qui demeure</h3><p>Égalité civile, fin des privilèges féodaux, Code civil, découpage départemental, laïcisation de l'état civil, idée de nation souveraine, diffusion des idéaux révolutionnaires en Europe.</p></div>
+      <div class="card"><h3>Ce qui recule ou reste débattu</h3><p>Régime représentatif fragilisé par le pouvoir personnel, restriction des libertés politiques sous l'Empire, statut des femmes limité par le Code civil, rétablissement de l'esclavage dans les colonies en 1802.</p></div>
+    </div>
+
+    <p>La période 1789-1815 invente le répertoire politique moderne — droits de l'homme, constitution écrite, souveraineté nationale, nation en armes — mais aussi ses tensions constitutives : entre liberté et ordre, entre révolution et césarisme, entre universalisme des principes et réalités de la domination impériale.</p>
+  </div>
+</section>
+
+<section id="reviser" class="alt">
+  <div class="wrap">
+    <span class="eyebrow-date">Réviser</span>
+    <h2>Repères essentiels</h2>
+    <p class="lede">Quelques points à vérifier avant le contrôle.</p>
+
+    <details>
+      <summary>Les grandes dates à connaître par cœur</summary>
+      <div class="a">14 juillet 1789 (Bastille) · 26 août 1789 (DDHC) · 21 septembre 1792 (République) · 21 janvier 1793 (mort de Louis XVI) · 27 juillet 1794 (9 thermidor) · 9 novembre 1799 (18 Brumaire) · 2 décembre 1804 (sacre) · 18 juin 1815 (Waterloo).</div>
+    </details>
+    <details>
+      <summary>Les régimes politiques, dans l'ordre</summary>
+      <div class="a">Monarchie absolue → Monarchie constitutionnelle (1791-92) → Ire République : Convention (1792-95) → Directoire (1795-99) → Consulat (1799-1804) → Premier Empire (1804-1814/15) → Restauration.</div>
+    </details>
+    <details>
+      <summary>Ce qui distingue les Girondins des Montagnards</summary>
+      <div class="a">Les Girondins défendent une République fédérale et modérée, portée par la bourgeoisie provinciale. Les Montagnards, appuyés sur les sans-culottes parisiens, veulent une République une et indivisible, plus sociale et plus centralisée — ce qui l'emporte en 1793.</div>
+    </details>
+    <details>
+      <summary>Pourquoi Bonaparte réussit-il là où le Directoire échoue ?</summary>
+      <div class="a">Il incarne l'ordre après une décennie d'instabilité, s'appuie sur une légitimité plébiscitaire directe plutôt que parlementaire, et conserve les acquis sociaux de la Révolution (propriété, égalité civile) tout en rassurant les catholiques (Concordat) et les émigrés modérés (amnistie).</div>
+    </details>
+    <details>
+      <summary>En quoi l'Empire est-il à la fois héritier et fossoyeur de la Révolution ?</summary>
+      <div class="a">Il diffuse le Code civil et l'égalité juridique en Europe (héritage), mais rétablit une monarchie héréditaire, une noblesse et une censure de la presse, et suspend les libertés politiques conquises en 1789 (rupture).</div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="frise"></div>
+  Fiche de révision — Histoire, 1ère spécialité<br>
+  La Révolution française et l'Empire, 1789-1815
+</footer>
+
+</body>
+</html>
